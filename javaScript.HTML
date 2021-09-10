@@ -1,0 +1,103 @@
+<html> 
+<head>
+<center>  
+<script language ="javaScript"> 
+
+function guessing() 
+{
+	/* block comment 
+	1.Insert number guess here. 
+	2.generate random number
+	3.if number is lower/higher than guess, say lower/higher and allow guess again
+	4. When answer = number generated, alert= " congratulations! want to play again?"
+	5. If answer=true reset algorithm
+	5. If answer=false, alert=" see you next time";
+	*/ 
+	
+	var usersGuess = -1;
+	var numOfGuesses = 0; // camel case 
+	var rand = Math.random()*10 
+	rand = rand +1; 
+	rand = parseInt(rand); 
+	//alert(rand);
+	
+	var usersGuess = prompt("Enter a Number between 1-10") // "Enter a Number..." is a parameter. 
+	//alert(usersGuess);
+	 
+	while (usersGuess !=rand ) // Loop while the users answer is wrong.
+	{
+		if ( usersGuess < rand ) // Guess is too low
+		{
+		alert("Too Low! Try Again!")
+		var numOfGuesses = numOfGuesses +1;
+		}
+		else if ( usersGuess > rand ) // Guess is too low
+		{
+		alert(" Too High! Try Again!")
+		var numOfGuesses = numOfGuesses +1;
+		}
+		
+		var usersGuess = prompt ("Enter a New Number Between 1-10")
+		
+	}
+	if (usersGuess = rand) 
+	var numOfGuesses = numOfGuesses +1;
+	alert ("Well done, You got it in "+numOfGuesses+" tries!")
+	
+		
+}// end of guessing()
+
+
+function greeting1() 
+{
+	alert("Salve!") // "Salve" is a parameter. 
+
+}// end of greeting1()
+
+function greeting2() 
+{
+	// = is the assignment operator. 
+	// assignment stores whats on the right side into the element on the left.
+	var name = prompt("Enter Your Name") // "type your name" is a parameter. 
+	alert("Bonam Diem, "+name);
+}// end of greeting2()
+
+function greeting3() 
+{
+	// = is the assignment operator. 
+	// assignment stores whats on the right side into the element on the left.
+	var answer = confirm (" Do you want to play again?"); 
+		alert(answer); 
+		
+}// end of greeting3()
+
+</script> 
+</head> 
+<body bgcolor="#03a094">
+<font face="Goudy Stout">
+<h1> First javaScript Page </h1> 
+
+
+<a href="index.html"> First Quarter Assignments </a> <br/><br/>
+ 
+<input type="button" value="Play my guessing game" onclick="guessing()"/>
+
+<br/><br/><br/><br/><br/><br/>
+
+<hr/ color="black"> 
+<input type="button" value="Click me" onclick="greeting1()" />
+<hr/ color ="purple"> 
+<input type="button" value="Click to enter a name" onclick="greeting2()" />   
+<hr/ color="black"> 
+<input type="button" value="Click one more time" onclick="greeting3()" />
+<hr/ color="purple"> 
+</font> 
+</center> 
+</body>
+
+
+
+
+
+
+</html> 
