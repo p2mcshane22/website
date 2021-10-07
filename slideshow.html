@@ -1,0 +1,106 @@
+<html>
+<head> 
+<script language="JavaScript">
+var counter = 0;
+var startTimer = false; 
+var picList = [ "images/slideshow/slide155.jpg",
+				"images/slideshow/slide259.png", 
+				"images/slideshow/slide363.jpg", 
+				"images/slideshow/slide465.png", 
+				"images/slideshow/slide581.png", 
+				"images/slideshow/slide688.png", 
+				"images/slideshow/slide72020.png"];
+				
+var clipList = ["sounds/1955 WS.mp3",
+				"sounds/1959 WS.mp3",
+				"sounds/1963 WS.mp3",
+				"sounds/1965 WS.mp3",
+				"sounds/1981 WS.mp3",
+				"sounds/1988 WS.mp3",
+				"sounds/2020 WS.mp3"]; 
+				
+				
+				
+var myData=[1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+var autoStart = false;
+
+function next()
+{
+	document.getElementById("display").src = picList[counter]; 
+	document.getElementById("player").src = clipList[counter];
+	document.getElementById("player").play();
+	increment();
+
+}
+function run()
+{ 
+	if( autoStart == false) 
+	{
+		autoStart = true; 
+		document.getElementById("runButton").value = "Stop"
+	}
+	else
+	{
+		autoStart = false; 
+		document.getElementById("runButton").value = "Run Slideshow"
+				
+	}
+	autoRun();
+}
+
+function autoRun()
+{
+	if ( autoStart == true ) 
+	{
+		next();
+	
+		timer = setTimeout("autoRun()",18000); 
+	
+	}
+	else
+	{
+		
+		clearTimeout(timer);
+	
+	}
+}
+ 
+function increment()
+{
+	if( counter == picList.length-1) 
+	{
+		counter = 0;
+	}
+	else
+	{
+	counter = counter +1
+	}
+	
+}
+
+
+</script>
+
+</head> 
+<body bgcolor="0A25EE">
+<font color="ffffff">
+<center> 
+<h1> Dodgers World Series Titles </h1> 
+
+<a href="index.html">Click here to go to my Index Page </a> 
+
+
+<br/><br/>
+<input type="button" value ="Next Slide" onclick="next()"/> 
+<input type="button" value ="Run Slideshow" onclick="run()" id="runButton"/> 
+
+<br/> <br/> <br/> 
+
+<img src="images/slideshow/slide155.jpg" id="display"/>
+
+<audio id="player"> </audio> 
+
+</center> 
+
+</body>
+</html> 
