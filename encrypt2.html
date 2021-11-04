@@ -1,0 +1,168 @@
+<html>
+<head>
+	<script language="javaScript">
+	
+	var alpha = [ "a", 
+	              "b",  
+	              "c",  
+	              "d",
+				  "e",
+				  "f",
+				  "g",
+				  "h",
+				  "i",
+				  "j",
+				  "k",
+				  "l",
+				  "m",
+				  "n",
+				  "o",
+				  "p",
+				  "q",
+				  "r",
+				  "s",
+				  "t",
+				  "u",
+				  "v",
+				  "w",
+				  "x",
+				  "y",
+				  "z",
+				  " "
+				];
+	
+	var omega = [ "z", 
+	              "x",  
+	              "c",  
+	              "v",
+				  "b",
+				  "n",
+				  "m",
+				  "w",
+				  "q",
+				  "e",
+				  "t",
+				  "r",
+				  "y",
+				  "u",
+				  "i",
+				  "o",
+				  "p",
+				  "a",
+				  "s",
+				  "d",
+				  " ",
+				  "g",
+				  "h",
+				  "j",
+				  "k",
+				  "l",
+				  "f"
+				];
+	var numberList; 
+	function secretMessage()
+	{	
+		//Nested if statement		
+		if (document.getElementById("unencrypt").value =="")// English box is empty
+		{
+			if (document.getElementById("encrypt").value =="")// Encrypted box also empty
+			{
+				alert("No data entered; please enter data to continue")
+			}
+			else 
+			{
+				document.getElementById("unencrypt").value = code(false);
+			}
+		}
+		else // There's data in the first box
+		{
+			if (document.getElementById("encrypt").value =="")// Encrypted box also empty
+			{
+				document.getElementById("encrypt").value = code(true)
+			}
+			else 
+			{
+				alert("Encryption box is full; please clear and try again");
+			}
+		}
+	}
+	
+	function code(amIencrypting)
+	{
+		var firstList;
+		var secondList; 
+		var firstBox; 
+		if( amIencrypting == true )
+		{
+			firstList = alpha;
+			secondList = omega; 
+			firstBox = document.getElementById("unencrypt").value
+		}
+		else 
+		{
+			firstList = omega;
+			secondList = alpha; 
+			firstBox = document.getElementById("encrypt").value
+		}
+		numberList = new Array(firstBox.length)
+		var counter = 0;
+		while( counter < firstBox.length )
+		{
+			
+			var let = firstBox.substr(counter,1);
+			var letIndex = firstList.indexOf(let);
+			numberList[counter] = letIndex;
+			
+			
+			counter++;
+		}
+		counter = 0;
+		var answer = "";
+		while( counter < firstBox.length )
+		{
+			
+			var numListValue = numberList[counter];
+			answer = answer + secondList[numListValue];
+			
+			
+			counter++;
+		}
+		
+		return answer; 
+		
+	}
+	
+	
+	
+
+	function clearBoxes()
+	{
+		document.getElementById("unencrypt").value =""; 
+		document.getElementById("encrypt").value ="";
+		//alert("Do you want to Clear?")
+	}
+	
+	
+	</script>
+</head>
+<body bgcolor="#03a094">
+	<center>
+		<h1>Encryption App 2.0</h1>
+		<br/> <br/>
+		<font size=5">
+		<a href="index.html">1st Quarter Assignments </a> 
+		<br/><br/><br/><br/><br/><br/>
+				
+		Un-Encrypted Message
+		<input type = "text" size="40" id="unencrypt"/> 
+		
+		<br/><br/>
+		Encrypted Message
+		<input type = "text" size="40" id="encrypt"/> 
+		<br/><br/>
+		<input type ="button" value="Encrypt" onClick="secretMessage()"/>
+		<input type ="button" value="Clear" onClick="clearBoxes()"/>
+		<br/><br/>
+	</center>
+</body>
+</html>
